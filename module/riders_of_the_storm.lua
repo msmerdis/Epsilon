@@ -1,19 +1,16 @@
-print("module - start");
+local addonName = select(1, ...);
 
 ---@class epsilon
-local epsilon = select(2, ...)
+local Epsilon = LibStub("AceAddon-3.0"):GetAddon(addonName);
 
-local module = {}
+local Module = {};
 
-
-function module:attach()
-	print("register riders of the storm module")
+function Module:Attach()
+	print("register riders of the storm module");
 end
 
-function module:detach()
-	print("remove riders of the storm module")
+function Module:Detach()
+	print("remove riders of the storm module");
 end
 
-epsilon.registerModule (self, module, "riders_of_the_storm", "Riders of the Storm")
-
-print("module - end");
+Epsilon.RegisterModule (self, Module, "riders_of_the_storm", "Riders of the Storm");

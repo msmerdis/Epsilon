@@ -3,26 +3,24 @@
    Licensed under LGPLv3 - No Warranty
 ]] --
 
-print("epsilon addon db - start");
+local addonName = select(1, ...);
 
 ---@class epsilon
-local epsilon = select(2, ...)
+local Epsilon = LibStub("AceAddon-3.0"):GetAddon(addonName);
 
-epsilon.defaults = {
-	modules = {},
+Epsilon.defaults = {
+	global = {
+		module = {}
+	},
 }
 
-epsilon.settings = {}
+Epsilon.settings = {}
 
-for idx, module in ipairs(epsilon:getRegisteredModules()) do
-	epsilon.defaults.modules[module.code] = true;
-	epsilon.settings[#epsilon.settings] = {
+for idx, module in ipairs(Epsilon:GetRegisteredModules()) do
+	Epsilon.defaults.global.module[module.code] = true;
+	Epsilon.settings[#Epsilon.settings + 1] = {
 		code = module.code,
 		name = module.name,
-		type = boolean
+		type = "checkbox",
 	}
-	print("epsilon addon db - " .. module.code);
 end
-
-
-print("epsilon addon db - end");
