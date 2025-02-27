@@ -1,0 +1,24 @@
+## Interface: 110005,110007
+## Title: Epsilon Addon
+## Notes: Addon for the Epsilon Guild
+## AddonCompartmentFunc: Epsilon_test2
+## DefaultState: enabled
+## Author: Miltiadis Smerdis
+## Version: 0.1
+
+## LoadManagers: AddonLoader
+
+## SavedVariables: EpsilonDB
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\LibDeflate\LibDeflate.lua
+libs\LibSerialize\LibSerialize.lua
+libs\LibDropDown\embed.xml
+
+# Core files
+Epsilon.lua
+module/riders_of_the_storm.lua
+Epsilon_db.lua
+Epsilon_options.lua
