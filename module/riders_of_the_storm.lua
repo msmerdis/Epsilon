@@ -32,11 +32,21 @@ Module:SetScript("OnEvent", function(self, event, ...)
 	local _, details = ...
 
 	if details.addedAuras and checkAuras(details.addedAuras, "G-99 Breakneck") then
-		print("added");
+		willPlay, soundHandle = PlaySoundFile("Interface\\Addons\\Epsilon\\audio\\sdrots.mp3", "Master");
+
+		if willPlay then
+			if Module.sound then
+				StopSound(Module.sound, 0.1);
+			end
+			Module.sound = soundHandle;
+			Module.status = GetCVar("Sound_EnableMusic");
+			SetCVar("Sound_EnableMusic", false);
+		end
 	end
 
-	if details.removedAuraInstanceIDs and checkAuraIds(details.removedAuraInstanceIDs) then
-		print("removed");
+	if Module.sound and details.removedAuraInstanceIDs and checkAuraIds(details.removedAuraInstanceIDs) then
+		StopSound(Module.sound, 0.1);
+		SetCVar("Sound_EnableMusic", Module.status);
 	end
 end);
 
