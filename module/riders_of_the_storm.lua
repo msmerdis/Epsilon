@@ -46,7 +46,9 @@ Module:SetScript("OnEvent", function(self, event, ...)
 
 	if Module.sound and details.removedAuraInstanceIDs and checkAuraIds(details.removedAuraInstanceIDs) then
 		StopSound(Module.sound, 0.1);
+		Module.sound = nil;
 		SetCVar("Sound_EnableMusic", Module.status);
+		Module.status = nil;
 	end
 end);
 
@@ -55,6 +57,14 @@ function Module:Attach()
 end
 
 function Module:Detach()
+	if Module.sound then
+		StopSound(Module.sound, 0.1);
+		Module.sound = nil;
+	end
+	if Module.status then
+		SetCVar("Sound_EnableMusic", Module.status);
+		Module.status = nil;
+	end
 	Module:UnregisterAllEvents();
 end
 
